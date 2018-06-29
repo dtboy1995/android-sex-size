@@ -1,5 +1,5 @@
 # android-sex-size
-:watermelon: parameters of some android devices
+:iphone: parameters of some android devices
 
 > BG2-W09 HUAWEI
 
