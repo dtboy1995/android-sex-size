@@ -1,6 +1,8 @@
 # android-sex-size
 :iphone: parameters of some android devices
 
+<br>
+
 > PROPAEDEUTICS
 
 - `in` 英寸，长度单位，与像素密度无关。1`in`单位的物理大小在任何像素密度上都是一样的，其转换为`px`依赖于屏幕的像素密度
@@ -10,14 +12,14 @@
 
 > Android DPI
 
-Density | scale | 1dp对应像素
-:-| :- | :- | :-
+Density | scale | 1dp对应像素 |
+:- | :- | :- |
 `mdpi`（160dpi）| 1.0px/dp | 1.0p
 `hdpi`（240dpi）| 1.5px/dp | 1.5px
 `xhdpi`（320dpi）| 2.0px/dp | 2.0px
 `xxhdpi`（480dpi）| 3.0px/dp | 3.0px
 `xxxhdpi`（640dpi）| 4.0px/dp | 4.0px
-`nodpi` | - | -  
+`nodpi` | - | -
 
 > BG2-W09 HUAWEI
 
