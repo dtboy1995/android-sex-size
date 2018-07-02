@@ -153,6 +153,15 @@ Density | scale | 1dp对应像素 |
 屏幕宽度（dp）| 533
 屏幕高度（dp）| 853
 
+### node scripts
+
+- install
+  - `npm install android-sex-size --global`
+- example
+  - `adaptive -b 360*640 -s source.xml -t 533*853 -o .`
+
+:four_leaf_clover:
+
 <br>
 
 [获取参数信息APP](apps/getsize.apk)
