@@ -1,0 +1,30 @@
+#!/usr/bin/env coffee
+Sizing = require '../src/Sizing'
+program = require 'commander'
+fs = require 'fs'
+pkj = require '../package.json'
+
+program
+  .version pkj.version
+  .description 'android screen adaptive use dimens'
+  .option '-b, --base <base>', 'base width height dp defaults to 360*640'
+  .option '-s, --source <source>', 'source path'
+  .option '-t, --target <target>', 'target width height dp'
+  .option '-o, --output <output>', 'destination path'
+  .parse process.argv
+
+{ base, source, target, output } = program
+
+if base is true or !base
+  return program.help()
+
+if source is true or !source
+  return program.help()
+
+if target is true or !target
+  return program.help()
+
+if output is true or !output
+  return program.help()
+
+Sizing program

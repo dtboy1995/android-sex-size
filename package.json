@@ -1,0 +1,29 @@
+{
+  "name": "android-sex-size",
+  "version": "0.0.1",
+  "description": ":iphone: parameters of some android devices",
+  "main": "index.js",
+  "bin": {
+    "adaptive": "./bin/cli"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtboy1995/android-sex-size.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dtboy1995/android-sex-size/issues"
+  },
+  "homepage": "https://github.com/dtboy1995/android-sex-size#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "commander": "^2.16.0",
+    "lodash": "^4.17.10",
+    "mkdirs": "0.0.2",
+    "xml2js": "^0.4.19"
+  }
+}
