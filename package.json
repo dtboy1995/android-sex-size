@@ -1,13 +1,14 @@
 {
   "name": "android-sex-size",
-  "version": "0.0.1",
-  "description": ":iphone: parameters of some android devices",
+  "version": "0.0.2",
+  "description": ":iphone: a nodejs tool for Android screen adaptation",
   "main": "index.js",
   "bin": {
     "adaptive": "./bin/cli.js"
   },
   "scripts": {
-    "build": "coffee --output bin/ -c src/"
+    "test": "",
+    "build": "coffee --output bin/ -c src/ && coffee src/ceil.coffee"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/dtboy1995/android-sex-size#readme",
   "dependencies": {
     "bluebird": "^3.5.1",
+    "colors": "^1.3.0",
     "commander": "^2.16.0",
     "lodash": "^4.17.10",
     "mkdirs": "0.0.2",
