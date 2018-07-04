@@ -32,7 +32,7 @@ if config?
   confobj = JSON.parse confstr
   return measure confobj
 
-if base is true
+unless base?
   program.base = '360*640'
 
 program.targets = [ target ]

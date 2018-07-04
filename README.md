@@ -31,11 +31,22 @@
 - source xml sample
   - prefix `w_` presents width unit
   - prefix `h_` presents height unit
+- source `360`*`640`
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="w_title_width">80dp</dimen>
     <dimen name="h_title_height">44dp</dimen>
+</resources>
+```
+- target `533`*`853`
+  - run `adaptive -s ./sample/dimens.xml -t 533*853 -o .`
+  - got `values-w533dp-h853dp\dimens.xml`
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="w_title_width">118.4dp</dimen>
+    <dimen name="h_title_height">58.6dp</dimen>
 </resources>
 ```
 
