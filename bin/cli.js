@@ -33,7 +33,7 @@
     return measure(confobj);
   }
 
-  if (base === true) {
+  if (base == null) {
     program.base = '360*640';
   }
 

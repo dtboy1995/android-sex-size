@@ -1,5 +1,7 @@
+# ![android-sex-size](art/logo.png)
+
 # android-sex-size [![Build Status](https://travis-ci.org/dtboy1995/android-sex-size.svg?branch=master)](https://travis-ci.org/dtboy1995/android-sex-size)
-:iphone: a nodejs tool for Android screen adaptation
+:triangular_ruler: a nodejs tool for Android screen adaptation
 
 # install
 
@@ -31,7 +33,7 @@
 - source xml sample
   - prefix `w_` presents width unit
   - prefix `h_` presents height unit
-- source `360`*`640`
+  - source `360`*`640`
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -39,9 +41,9 @@
     <dimen name="h_title_height">44dp</dimen>
 </resources>
 ```
-- target `533`*`853`
-  - run `adaptive -s ./sample/dimens.xml -t 533*853 -o .`
-  - got `values-w533dp-h853dp\dimens.xml`
+  - target `533`*`853`
+    - run `adaptive -s ./sample/dimens.xml -t 533*853 -o .`
+    - got `values-w533dp-h853dp\dimens.xml`
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -50,6 +52,7 @@
 </resources>
 ```
 
-# APP
+# others
 
-:four_leaf_clover: [gets the app screen parameters](apps/measure.apk)
+- :four_leaf_clover: [gets the app screen parameters](apps/measure.apk)
+- :cactus: [screen snippets](snippets.md)

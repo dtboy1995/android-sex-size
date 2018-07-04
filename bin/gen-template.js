@@ -12,7 +12,7 @@
     var T, template;
     T = {
       base: '360*640',
-      source: '[PROJECT_LOCATION]\\app\\src\\main\res\\values\\dimens.xml',
+      source: '[PROJECT_LOCATION]\\app\\src\\main\\res\\values\\dimens.xml',
       targets: ['411*731', '360*720', '533*853'],
       output: '[PROJECT_LOCATION]\\app\\src\\main\\res'
     };
