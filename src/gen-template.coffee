@@ -5,7 +5,7 @@ path = require 'path'
 TEMPLATE = () ->
   T =
     base: '360*640'
-    source: '[PROJECT_LOCATION]\\app\\src\\main\res\\values\\dimens.xml'
+    source: '[PROJECT_LOCATION]\\app\\src\\main\\res\\values\\dimens.xml'
     targets: [
       '411*731'
       '360*720'
