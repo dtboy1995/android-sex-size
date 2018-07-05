@@ -12,9 +12,9 @@
     var T, template;
     T = {
       base: '360*640',
-      source: '[PROJECT_LOCATION]\\app\\src\\main\\res\\values\\dimens.xml',
+      source: '[PROJECT_LOCATION]/app/src/main/res/values/dimens.xml',
       targets: ['411*731', '360*720', '533*853'],
-      output: '[PROJECT_LOCATION]\\app\\src\\main\\res'
+      output: '[PROJECT_LOCATION]/app/src/main/res'
     };
     template = JSON.stringify(T, null, 2);
     fs.writeFileSync(path.join(process.cwd(), 'config.json'), template);
