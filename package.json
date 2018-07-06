@@ -1,6 +1,6 @@
 {
   "name": "android-sex-size",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": ":iphone: a nodejs tool for Android screen adaptation",
   "main": "index.js",
   "bin": {

@@ -36,7 +36,8 @@ module.exports = ({base, source, targets, output}) ->
                      d['_'] = "#{convertW(base, TARGET_W, BASE_W)}#{unit}"
                  return d
               xmlstr = Builder.buildObject resources
-              dir = path.join output, "values-w#{TARGET_W}dp-h#{TARGET_H}dp"
+              # dir = path.join output, "values-w#{TARGET_W}dp-h#{TARGET_H}dp"
+              dir = path.join output, "values-sw#{TARGET_W}"
               mkdirs dir
               file = path.join dir, 'dimens.xml'
               fs.writeFileSync file, xmlstr
