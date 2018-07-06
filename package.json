@@ -7,7 +7,7 @@
     "adaptive": "./bin/cli.js"
   },
   "scripts": {
-    "test": "",
+    "test": "echo hello",
     "build": "coffee --output bin/ -c src/ && coffee src/ceil.coffee"
   },
   "repository": {

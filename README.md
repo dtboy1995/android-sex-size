@@ -42,7 +42,7 @@
 ```
 - target `533`*`853`
 - run `adaptive` -s ./sample/dimens.xml -t 533*853 -o .
-- got **values-sw533dp\dimens.xml**
+- will get **values-sw533dp\dimens.xml**
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
