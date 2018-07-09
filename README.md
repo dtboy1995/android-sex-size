@@ -75,7 +75,9 @@
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"                  android:layout_width="@dimens/z66e175cf3015415aab1903f7970aad3e"       android:layout_height="@dimens/z62a8f9f7528642cc95276e77e3bde81f"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimens/z66e175cf3015415aab1903f7970aad3e"
+    android:layout_height="@dimens/z62a8f9f7528642cc95276e77e3bde81f"
     android:orientation="vertical">
       <TextView
         android:layout_width="wrap_content"
