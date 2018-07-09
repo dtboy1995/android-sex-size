@@ -6,6 +6,7 @@ fs = require 'fs'
 pkj = require '../package.json'
 genTemplate = require './gen-template'
 colors = require 'colors/safe'
+indolentFunc = require './indolent'
 
 program
   .version pkj.version
@@ -15,11 +16,12 @@ program
   .option '-t, --target <target>', 'target width height dp'
   .option '-o, --output <output>', 'destination path'
   .option '-c, --config [config]', 'config file path'
+  .option '-i, --indolent [indolent]', 'indolent file path'
   .option '--sample', 'output a sample'
   .option '--template', 'generate config file template'
   .parse process.argv
 
-{ base, target, template, config, sample } = program
+{ base, target, template, config, sample, indolent } = program
 
 if template
   return genTemplate()
@@ -31,6 +33,9 @@ if config?
   confstr = fs.readFileSync config, 'utf-8'
   confobj = JSON.parse confstr
   return measure confobj
+
+if indolent?
+  return indolentFunc indolent
 
 unless base?
   program.base = '360*640'

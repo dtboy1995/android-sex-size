@@ -7,7 +7,7 @@ xml2js  = require 'xml2js'
 parser = Promise.promisify parseString
 builder = new xml2js.Builder
   rootName: 'resources'
-  xmldec: 
+  xmldec:
     encoding: 'utf-8'
     standalone: null
 
