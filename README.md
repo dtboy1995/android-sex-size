@@ -50,7 +50,7 @@
 </resources>
 ```
 ### indolent
-- `indolent` ./layout.xml
+- `adaptive` --indolent ./layout.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
