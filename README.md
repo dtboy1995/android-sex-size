@@ -1,7 +1,7 @@
 # ![android-sex-size](art/logo.png)
 
 # android-sex-size [![Build Status](https://travis-ci.org/dtboy1995/android-sex-size.svg?branch=master)](https://travis-ci.org/dtboy1995/android-sex-size)
-:triangular_ruler: a nodejs tool for Android screen adaptation
+:factory: a nodejs tools for android screen adaptation
 
 # install
 
@@ -9,100 +9,57 @@
 
 # usage
 
-### config template
-- `adaptive` --template
-- will generate `config.json`
+### generate config file
+- `ruler --config`
+- `config.json` is generated in the current directory
 ```json
 {
-    "base": "360*640",
-    "source": "[PROJECT_LOCATION]/app/src/main/res/values/dimens.xml",
-    "targets": [
-      "411*731",
-      "360*720",
-      "533*853"
-    ],
-    "output": "[PROJECT_LOCATION]/app/src/main/res"
+  "base": 360,
+  "source": "replace it with your base dimens.xml path",
+  "targets": [ 384,392,400,410,411,480,533,592,600,640,662,720,768,800,811,820 ],
+  "output": "replace it with your output path",
+  "extract": "replace with the directory where you need to extract dp and sp"
 }
 ```
+- there is no width in the target that you want to fit?
+  - [download app to get width](apps/infomation.apk)
 
-### run with config.json
-- `adaptive` --config config.json
+### measure with config.json
+- `ruler --measure config.json`
+- generate the directory in the target like `values-sw533dp` `values-sw720dp` ...
 
-### sample usage
-- `adaptive` --sample
-- `adaptive` -b 360\*640 -s dimens.xml -t 533\*853 -o .
+### extract with config.json
+- `ruler --extract config.json`
+- replace the extracted dp and sp files and write the extracted values to dimens.xml in the current directory
+- origin
+```xml
+  <LinearLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="200dp"
+      android:layout_height="100dp"
+      android:orientation="vertical">
+  </LinearLayout>
+```
+- current
+```xml
+  <LinearLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="@dimens/ithot03f7970aad3e"
+      android:layout_height="@dimens/ithote77e3bde81fa"
+      android:orientation="vertical">
+  </LinearLayout>
+```
+- dimens.xml
+```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <resources>
+    <dimen name="ithot03f7970aad3e">200dp</dimen>
+    <dimen name="ithote77e3bde81fa">100dp</dimen>
+  </resources>
+```
 
-### source xml sample
-- source `360`*`640`
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="title_width">80dp</dimen>
-</resources>
-```
-- target `533`*`853`
-- run `adaptive` -s ./sample/dimens.xml -t 533*853 -o .
-- will get **values-sw533dp\dimens.xml**
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="title_width">118.4dp</dimen>
-</resources>
-```
-### indolent
-- `adaptive` --indolent ./layout.xml
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="100dp"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black_light"
-        android:textSize="15sp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black_light"
-        android:textSize="20sp" />
-</LinearLayout>
-```
-- the following two files are generated
-- `out.xml`
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimens/z66e175cf3015415aab1903f7970aad3e"
-    android:layout_height="@dimens/z62a8f9f7528642cc95276e77e3bde81f"
-    android:orientation="vertical">
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black_light"
-        android:textSize="@dimens/z2042775670b242e0b9092da4aeec3137"/>
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black_light"
-        android:textSize="@dimens/z1b717b1d605648638dc46f841074ae1f"/>
-</LinearLayout>
-```
-- `dimens.xml`
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <dimen name="z66e175cf3015415aab1903f7970aad3e">200dp</dimen>
-  <dimen name="z62a8f9f7528642cc95276e77e3bde81f">100dp</dimen>
-  <dimen name="z2042775670b242e0b9092da4aeec3137">15sp</dimen>
-  <dimen name="z1b717b1d605648638dc46f841074ae1f">20sp</dimen>
-</resources>
-```
+### start gui
+- todo
 
 # others
-
-- :four_leaf_clover: [gets the app screen parameters](apps/measure.apk)
-- :cactus: [screen size snippets](snippets.md)
+- :eight_pointed_black_star: [screen size snippets](screens/snippets.md)

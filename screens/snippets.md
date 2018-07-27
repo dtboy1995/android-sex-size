@@ -1,21 +1,3 @@
-> PROPAEDEUTICS
-
-- `in` 英寸，长度单位，与像素密度无关。1`in`单位的物理大小在任何像素密度上都是一样的，其转换为`px`依赖于屏幕的像素密度
-- `px` 像素，是屏幕的像素点，对应的物理`DPI`（和后面讲到的Android `dpi`要区分开）是每英寸像素数，同样分辨率尺寸越大像素点越大，物理`DPI`值就越低，同一块屏幕的`px`和物理`dpi`是相同的
-- `dp`或`dip`：设备独立像素（device independent pixels），即`dp`（`dip`与`dp`完全相同，只是名字不同而已。在早期的Android版本里多使用`dip`，后来为了与`sp`统一就建议使用`dp`了），基于屏幕密度的抽象单位，不同设备不同显示屏显示效果不同和设备硬件有关，但与像素密度无关。`dip`/`pixel` = `dpi`/160，即1`dip`等价于`dpi`为160的设备中的1个像素点。
-- `sp`：同`dp`相似，主要处理字体的大小，与像素密度无关。与`dp`类似，但是可以根据字体大小选项进行缩放。
-
-> Android DPI
-
-Density | scale | 1dp对应像素 |
-:- | :- | :- |
-`mdpi`（160dpi）| 1.0px/dp | 1.0p
-`hdpi`（240dpi）| 1.5px/dp | 1.5px
-`xhdpi`（320dpi）| 2.0px/dp | 2.0px
-`xxhdpi`（480dpi）| 3.0px/dp | 3.0px
-`xxxhdpi`（640dpi）| 4.0px/dp | 4.0px
-`nodpi` | - | -
-
 > BG2-W09 HUAWEI
 
 类型 | 值 |

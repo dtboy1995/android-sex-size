@@ -4,7 +4,7 @@
 
   fs = require('fs');
 
-  file = __dirname + "/../bin/cli.js";
+  file = __dirname + "/../bin/ruler.js";
 
   clistr = fs.readFileSync(file, 'utf-8');
 
