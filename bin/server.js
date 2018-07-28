@@ -36,7 +36,7 @@
 
   app.use(bodyParser.json());
 
-  app.use('/', express["static"]('art'));
+  app.use('/', express["static"](path.join(__dirname, '..', 'art')));
 
   app.get('/config', function(req, res) {
     return res.send(template().replace('%s', DEFAULT_TARGETS));
@@ -61,6 +61,7 @@
   });
 
   app.use(function(err, req, res, next) {
+    console.log("" + (colors.red('[error]')) + err);
     return res.send({
       err: err
     });

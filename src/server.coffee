@@ -16,7 +16,7 @@ DEFAULT_TARGETS =   require './common'
 app.use favicon(path.join(__dirname, '..' ,'art', 'favicon.ico'))
 app.use bodyParser.urlencoded( extended: true )
 app.use bodyParser.json()
-app.use '/', express.static 'art'
+app.use '/', express.static(path.join(__dirname, '..', 'art'))
 
 app.get '/config', (req, res) ->
   res.send template().replace('%s', DEFAULT_TARGETS)
@@ -38,6 +38,7 @@ app.use (req, res, next) ->
   next err
 
 app.use (err, req, res, next) ->
+  console.log "#{colors.red '[error]'}#{err}"
   res.send err: err
 
 handler = () ->
