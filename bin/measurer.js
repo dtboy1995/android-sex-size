@@ -67,10 +67,8 @@
     });
   };
 
-  module.exports = function(config) {
-    return read(config, 'utf-8').then(function(option) {
-      return handler(JSON.parse(option));
-    });
+  module.exports = function(option) {
+    return handler(option);
   };
 
 }).call(this);

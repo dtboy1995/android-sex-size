@@ -1,0 +1,3 @@
+DEFAULT_TARGETS   =   [ 384 ,392, 400, 410, 411, 480, 533, 592, 600, 640, 662, 720, 768, 800, 811, 820 ]
+
+module.exports = JSON.stringify DEFAULT_TARGETS

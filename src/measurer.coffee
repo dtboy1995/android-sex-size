@@ -36,7 +36,5 @@ handler = ({ base, source, targets, output }) ->
    .then ->
      console.log "> #{colors.cyan('all done.')}"
 
-module.exports = (config) ->
-  read config, 'utf-8'
-    .then (option) ->
-      handler JSON.parse(option)
+module.exports = (option) ->
+  handler option

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ruler</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'font';
+      src: url('/consola.ttf');
+    }
+
+    * {
+      font-family: 'font' !important;
+    }
+
+    .container {
+      padding-top: 15px;
+    }
+
+    .panel,
+    .btn,
+    .form-control,
+    pre {
+      border-radius: 0 !important;
+    }
+
+    .panel-heading, .btn {
+      background-image: url('/overlay-pattern.png');
+    }
+
+    .fixed {
+      position: fixed;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      line-height: 50px;
+      height: 50px;
+      text-align: center;
+      color: #fff;
+      transition: top 0.5s;
+    }
+
+    .fixed.active {
+      top: 0;
+    }
+
+    .panel-heading > span {
+      display: inline-block;
+      line-height: 34px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class='container'>
+    <div class="fixed" v-bind:class="{ active:active }" v-bind:style="{ background: color }" v-text="hint"></div>
+    <div class="panel panel-warning">
+      <div class="panel-heading clearfix">
+        <span>View config.json</span>
+        <button type="button" name="button" @click="generate()" class="btn btn-warning pull-right">view</button>
+      </div>
+      <div class="panel-body">
+        <pre v-text="config"></pre>
+      </div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <span>Measure dimens</span>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="measure_base" placeholder="Input base example for 360">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="measure_source" placeholder="Input source dir example for c:/app">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="measure_targets" placeholder="Input target values example for 511, 611, 720...">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="measure_output" placeholder="Input output dir example for c:/output">
+        </div>
+        <button type="button" name="button" @click="measure()" class="btn btn-primary pull-right">measure</button>
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading clearfix">
+        <span>Extract dp sp</span>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="extract_dir" placeholder="Input the directory where you need to extract dp and sp example for c:/layout">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="extract_output" placeholder="Input output dir example for c:/output">
+        </div>
+        <button type="button" name="button" @click="extract()" class="btn btn-info pull-right">extract</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.2.3/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        measure_base: null,
+        measure_source: null,
+        measure_targets: null,
+        measure_output: null,
+        extract_dir: null,
+        extract_output: null,
+        config: null,
+        hint: null,
+        color: null,
+        active: false
+      },
+      created: function() {
+        this.config = 'Click the button in the upper right corner to get the configuration file.';
+      },
+      methods: {
+        generate: function() {
+          fetch('/config')
+            .then(function(res) {
+              return res.json();
+            })
+            .then(function(res) {
+              app.config = res;
+            });
+        },
+        toast: function(color, hint) {
+          app.color = color;
+          app.hint = hint;
+          app.active = true;
+          setTimeout(function() {
+            app.active = false;
+          }, 2000);
+        },
+        extract: function() {
+          if (app.extract_dir && app.extract_output) {
+            this.post('/extract', {
+              extract: app.extract_dir,
+              output: app.extract_output
+            }).then(function(res) {
+              app.extract_dir = null;
+              app.extract_output = null;
+              app.toast("#8bc34a", "Operate Success!");
+            });
+          } else {
+            app.toast("#d9534f", "Please complete the information!");
+          }
+        },
+        measure: function() {
+          if (app.measure_base && app.measure_targets && app.measure_source && app.measure_output) {
+            var targets = app.measure_targets.split(/\s*,\s*/).map(function(target) {
+              return +target;
+            });
+            this.post('/measure', {
+              base: +app.measure_base,
+              source: app.measure_source,
+              targets: targets,
+              output: app.measure_output
+            }).then(function(res) {
+              app.measure_base = null;
+              app.measure_source = null;
+              app.measure_targets = null;
+              app.measure_output = null;
+              app.toast("#8bc34a", "Operate Success!");
+            });
+          } else {
+            app.toast("#d9534f", "Please complete the information!");
+          }
+        },
+        post: function(url, body) {
+          return fetch(url, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+          });
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

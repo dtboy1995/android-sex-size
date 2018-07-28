@@ -3,6 +3,7 @@ fs        =   require 'fs'
 uid       =   require 'uid'
 colors    =   require 'colors/safe'
 glob      =   require 'glob'
+mkdirs    =   require './mkdirs'
 convert   =   require 'xml-js'
 Promise   =   require 'bluebird'
 read      =   Promise.promisify fs.readFile
@@ -45,7 +46,7 @@ parser = (document, elements) ->
           ]
         document[key] = "@dimen/#{name}"
 
-handler = ({extract}) ->
+handler = ({extract, output}) ->
   files = unless fs.lstatSync(extract).isDirectory() then [extract] else glob.sync("#{extract}/**/*.xml")
   dimens =
     declaration:
@@ -62,11 +63,11 @@ handler = ({extract}) ->
   Promise
     .all promises
     .then ->
-      write "#{process.cwd()}/dimens.xml", convert.js2xml(dimens, spaces: 4)
+      mkdirs output
+    .then ->
+      write "#{output}/dimens.xml", convert.js2xml(dimens, spaces: 4)
     .then ->
       console.log "> #{colors.cyan('all done.')}"
 
-module.exports = (config) ->
-  read config, 'utf-8'
-    .then (option) ->
-      handler JSON.parse(option)
+module.exports = (option) ->
+  handler option

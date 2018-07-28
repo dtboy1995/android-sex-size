@@ -1,11 +1,14 @@
 #!/usr/bin/env coffee
 fs              =     require 'fs'
+path            =     require 'path'
 pkg             =     require '../package'
 measurer        =     require './measurer'
 program         =     require 'commander'
 colors          =     require 'colors/safe'
 template        =     require './config-template'
 extracter       =     require './extracter'
+server          =     require './server'
+DEFAULT_TARGETS =     require './common'
 
 program
   .version pkg.version
@@ -22,10 +25,19 @@ if program.rawArgs.length <= 2
    return program.help()
 
 if config
-  return template()
+  output = path.join process.cwd(), 'config.json'
+  fs.writeFileSync output, template().replace('%s', DEFAULT_TARGETS)
+  return console.log "#{colors.cyan '+'} [config.json] #{colors.yellow 'generated.'}"
+
+if gui
+  return server()
 
 if extract and typeof extract is 'string'
-  return extracter extract
+  return read extract, 'utf-8'
+           .then (option) ->
+              extracter JSON.parse(option)
 
 if measure and typeof measure is 'string'
-  return measurer measure
+  return read measure, 'utf-8'
+           .then (option) ->
+              measurer JSON.parse(option)

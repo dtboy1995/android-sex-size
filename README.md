@@ -1,7 +1,7 @@
 # ![android-sex-size](art/logo.png)
 
 # android-sex-size [![Build Status](https://travis-ci.org/dtboy1995/android-sex-size.svg?branch=master)](https://travis-ci.org/dtboy1995/android-sex-size)
-:factory: a nodejs tools for android screen adaptation
+:tea: a nodejs tools for android screen adaptation
 
 # install
 
@@ -59,7 +59,10 @@
 ```
 
 ### start gui
-- todo
+- `ruler --gui`
+- snapshot
+
+![gui](art/gui.png)
 
 # others
-- :eight_pointed_black_star: [screen size snippets](screens/snippets.md)
+- :page_facing_up: [some screen snippets](screens/snippets.md)
