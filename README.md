@@ -60,9 +60,9 @@
 
 ### start gui
 - `ruler --gui`
-- **http://localhost:8888** snapshot
+- browse **localhost:8888** snapshot
 
-# ![gui](art/gui.png)
+# ![gui](art/gui.jpg)
 
 # others
 - :page_facing_up: [some screen snippets](screens/snippets.md)
