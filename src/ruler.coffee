@@ -4,11 +4,13 @@ path            =     require 'path'
 pkg             =     require '../package'
 measurer        =     require './measurer'
 program         =     require 'commander'
+Promise         =     require 'bluebird'
 colors          =     require 'colors/safe'
 template        =     require './config-template'
 extracter       =     require './extracter'
 server          =     require './server'
 DEFAULT_TARGETS =     require './common'
+read            =     Promise.promisify fs.readFile
 
 program
   .version pkg.version

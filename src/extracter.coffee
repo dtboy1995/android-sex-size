@@ -9,19 +9,22 @@ Promise   =   require 'bluebird'
 read      =   Promise.promisify fs.readFile
 write     =   Promise.promisify fs.writeFile
 
-SEED        =   10
-duplicate   =   false # reserved
-names       =   {}
-expect      =   (v) -> /^[0-9]+(dp|sp)$/.test v
+SEED          =   10
+duplicate     =   false # reserved
+names         =   {}
+expect        =   (v) -> /^[0-9]+(dp|sp)$/.test v
+DECLARATION   =   '<?xml version="1.0" encoding="utf-8"?>'
 
 dispatcher = (file, elements) ->
   read file, 'utf-8'
     .then (xmlstr) ->
       document = convert.xml2js xmlstr
       parser document, elements
-      write file, convert.js2xml document,
+      xmloutstr = convert.js2xml document,
           indentAttributes: true
+          ignoreDeclaration: true
           spaces: 4
+      write file, "#{DECLARATION}#{xmloutstr}"
     .then ->
       console.log "#{colors.yellow '+'} [#{file}] #{colors.green 'extracted.'}"
 
