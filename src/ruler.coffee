@@ -10,18 +10,20 @@ template        =     require './config-template'
 extracter       =     require './extracter'
 server          =     require './server'
 DEFAULT_TARGETS =     require './common'
+dragoner        =     require './dragoner'
 read            =     Promise.promisify fs.readFile
 
 program
   .version pkg.version
   .description 'android screen adaptation tools'
-  .option '-m, --measure [config]', 'measure targets size to output'
-  .option '-e, --extract [config]', 'extract dp sp to variable'
-  .option '-g, --gui', 'start gui server'
   .option '-c, --config', 'generate config.json'
+  .option '-m, --measure [config]', 'measure targets size to output'
+  .option '-e, --extract [config]', 'extract dp sp to variable (operational irreversibility)'
+  .option '-g, --gui', 'start gui server'
+  .option '-d, --dragon [config]', 'a dragon service that extract and measure (operational irreversibility)'
   .parse process.argv
 
-{ measure, extract, gui, config } = program
+{ measure, extract, gui, config, dragon } = program
 
 if program.rawArgs.length <= 2
    return program.help()
@@ -38,6 +40,11 @@ if extract and typeof extract is 'string'
   return read extract, 'utf-8'
            .then (option) ->
               extracter JSON.parse(option)
+
+if dragon and typeof dragon is 'string'
+  return read dragon, 'utf-8'
+           .then (option) ->
+              dragoner JSON.parse(option)
 
 if measure and typeof measure is 'string'
   return read measure, 'utf-8'

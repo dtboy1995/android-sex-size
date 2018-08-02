@@ -4,10 +4,11 @@ colors      =   require 'colors/safe'
 express     =   require 'express'
 bodyParser  =   require 'body-parser'
 favicon     =   require 'serve-favicon'
-app         =   express()
 template    =   require './config-template'
 extracter   =   require './extracter'
 measurer    =   require './measurer'
+dragoner    =   require './dragoner'
+app         =   express()
 
 SERVER_PORT     =   8888
 SERVER_ADDR     =   "http://localhost:#{SERVER_PORT}"
@@ -23,6 +24,12 @@ app.get '/config', (req, res) ->
 
 app.post '/measure', (req, res, next) ->
   measurer req.body
+    .then ->
+      res.sendStatus 204
+    .catch next
+
+app.post '/dragon', (req, res, next) ->
+  dragoner req.body
     .then ->
       res.sendStatus 204
     .catch next

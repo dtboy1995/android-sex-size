@@ -58,6 +58,9 @@
   </resources>
 ```
 
+### dragon *not published*
+- `ruler --dragon config.json`
+
 ### start gui
 - `ruler --gui`
 - browse **localhost:8888** snapshot

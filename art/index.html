@@ -101,15 +101,36 @@
         <button type="button" name="button" @click="extract()" class="btn btn-info pull-right">extract</button>
       </div>
     </div>
+
+    <div class="panel panel-success">
+      <div class="panel-heading clearfix">
+        <span>A dragon service</span>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="dragon_base" placeholder="Input the base dp width">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="dragon_dragon" placeholder="Input your app module path example for e:/project/app">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="dragon_targets" placeholder="Input your will measured widths">
+        </div>
+        <button type="button" name="button" @click="dragon()" class="btn btn-info pull-right">dragon</button>
+      </div>
+    </div>
   </div>
   <script src="https://cdn.bootcss.com/vue/2.2.3/vue.min.js"></script>
   <script>
     var app = new Vue({
       el: "#app",
       data: {
-        measure_base: null,
+        dragon_dragon: null,
+        dragon_targets: '360, 384 ,392, 400, 410, 411, 480, 533, 592, 600, 640, 662, 720, 768, 800, 811, 820',
+        dragon_base: 360,
+        measure_base: 360,
         measure_source: null,
-        measure_targets: null,
+        measure_targets: '360, 384 ,392, 400, 410, 411, 480, 533, 592, 600, 640, 662, 720, 768, 800, 811, 820',
         measure_output: null,
         extract_dir: null,
         extract_output: null,
@@ -145,8 +166,22 @@
               extract: app.extract_dir,
               output: app.extract_output
             }).then(function(res) {
-              app.extract_dir = null;
-              app.extract_output = null;
+              app.toast("#8bc34a", "Operate Success!");
+            });
+          } else {
+            app.toast("#d9534f", "Please complete the information!");
+          }
+        },
+        dragon: function(){
+          if (app.dragon_dragon && app.dragon_targets && app.dragon_base) {
+            var targets = app.dragon_targets.split(/\s*,\s*/).map(function(target) {
+              return +target;
+            });
+            this.post('/dragon', {
+              base: +app.dragon_base,
+              targets: targets,
+              dragon: app.dragon_dragon
+            }).then(function(res) {
               app.toast("#8bc34a", "Operate Success!");
             });
           } else {
@@ -164,10 +199,6 @@
               targets: targets,
               output: app.measure_output
             }).then(function(res) {
-              app.measure_base = null;
-              app.measure_source = null;
-              app.measure_targets = null;
-              app.measure_output = null;
               app.toast("#8bc34a", "Operate Success!");
             });
           } else {

@@ -1,14 +1,13 @@
 {
   "name": "android-sex-size",
-  "version": "0.1.12",
+  "version": "0.1.20",
   "description": "a nodejs cli tool for android screen adaptation",
   "bin": {
     "ruler": "./bin/ruler.js"
   },
   "scripts": {
     "test": "echo pass",
-    "build": "coffee --output bin/ -c src/ && coffee src/headline.coffee",
-    "play": "node bin/gui.js"
+    "release": "coffee src/build.coffee"
   },
   "repository": {
     "type": "git",
@@ -34,6 +33,8 @@
     "body-parser": "^1.18.3",
     "colors": "^1.3.0",
     "commander": "^2.16.0",
+    "del": "^3.0.0",
+    "execa": "^0.10.0",
     "express": "^4.16.3",
     "glob": "^7.1.2",
     "lodash": "^4.17.10",
