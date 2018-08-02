@@ -58,7 +58,7 @@
   </resources>
 ```
 
-### dragon *not published*
+### dragon
 - `ruler --dragon config.json`
 
 ### start gui
