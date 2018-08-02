@@ -9,7 +9,6 @@ colors          =     require 'colors/safe'
 template        =     require './config-template'
 extracter       =     require './extracter'
 server          =     require './server'
-DEFAULT_TARGETS =     require './common'
 dragoner        =     require './dragoner'
 read            =     Promise.promisify fs.readFile
 
@@ -30,7 +29,7 @@ if program.rawArgs.length <= 2
 
 if config
   output = path.join process.cwd(), 'config.json'
-  fs.writeFileSync output, template().replace('%s', DEFAULT_TARGETS)
+  fs.writeFileSync output, template()
   return console.log "#{colors.cyan '+'} [config.json] #{colors.yellow 'generated.'}"
 
 if gui

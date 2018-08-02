@@ -50,7 +50,7 @@ parser = (document, elements) ->
         document[key] = "@dimen/#{name}"
 
 handler = ({extract, output}) ->
-  files = unless fs.lstatSync(extract).isDirectory() then [extract] else glob.sync("#{extract}/**/*.xml")
+  files = unless fs.lstatSync(extract).isDirectory() then [extract] else glob.sync("#{extract}/**/!(dimens).xml")
   dimens =
     declaration:
       attributes:

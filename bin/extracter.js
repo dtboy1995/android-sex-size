@@ -95,7 +95,7 @@
   handler = function(arg) {
     var dimens, extract, file, files, output, promises;
     extract = arg.extract, output = arg.output;
-    files = !fs.lstatSync(extract).isDirectory() ? [extract] : glob.sync(extract + "/**/*.xml");
+    files = !fs.lstatSync(extract).isDirectory() ? [extract] : glob.sync(extract + "/**/!(dimens).xml");
     dimens = {
       declaration: {
         attributes: {

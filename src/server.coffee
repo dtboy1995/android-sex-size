@@ -12,7 +12,6 @@ app         =   express()
 
 SERVER_PORT     =   8888
 SERVER_ADDR     =   "http://localhost:#{SERVER_PORT}"
-DEFAULT_TARGETS =   require './common'
 
 app.use favicon(path.join(__dirname, '..' ,'art', 'favicon.ico'))
 app.use bodyParser.urlencoded( extended: true )
@@ -20,7 +19,7 @@ app.use bodyParser.json()
 app.use '/', express.static(path.join(__dirname, '..', 'art'))
 
 app.get '/config', (req, res) ->
-  res.send template().replace('%s', DEFAULT_TARGETS)
+  res.send template()
 
 app.post '/measure', (req, res, next) ->
   measurer req.body

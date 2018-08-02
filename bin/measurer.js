@@ -51,7 +51,10 @@
     base = arg.base, source = arg.source, targets = arg.targets, output = arg.output;
     return read(source, 'utf-8').then(function(xmlstr) {
       var document, promises, target;
-      document = convert.xml2js(xmlstr);
+      document = convert.xml2js(xmlstr, {
+        ignoreComment: true,
+        ignoreDeclaration: true
+      });
       promises = (function() {
         var i, len, results;
         results = [];

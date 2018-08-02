@@ -29,7 +29,7 @@ measure = (base, document, target, output) ->
 handler = ({ base, source, targets, output }) ->
   read source, 'utf-8'
    .then (xmlstr) ->
-     document = convert.xml2js xmlstr
+     document = convert.xml2js xmlstr, { ignoreComment: true, ignoreDeclaration: true }
      promises = for target in targets
        measure base, document, target, output
      Promise.all promises
