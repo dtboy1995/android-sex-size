@@ -7,7 +7,7 @@
   },
   "scripts": {
     "test": "echo pass",
-    "release": "coffee src/build.coffee"
+    "release": "coffee src/build.coffee && npm publish"
   },
   "repository": {
     "type": "git",
