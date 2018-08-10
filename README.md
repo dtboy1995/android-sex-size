@@ -4,8 +4,9 @@
 :tea: a nodejs tools for android screen adaptation
 
 # install
-
-> npm install android-sex-size --global
+```
+npm install android-sex-size --global
+```
 
 # usage
 
