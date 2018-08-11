@@ -1,7 +1,7 @@
 # ![android-sex-size](art/logo.png)
 
 # android-sex-size [![Build Status](https://travis-ci.org/dtboy1995/android-sex-size.svg?branch=master)](https://travis-ci.org/dtboy1995/android-sex-size)
-:tea: a nodejs tools for android screen adaptation
+:boom: a nodejs tools for android screen adaptation
 
 # install
 ```
@@ -66,7 +66,7 @@ npm install android-sex-size --global
 - `ruler --gui`
 - browse **localhost:8888** snapshot
 
-# ![gui](art/gui.jpg)
+# ![gui](art/gui.png)
 
 # others
 - :page_facing_up: [some screen snippets](screens/snippets.md)

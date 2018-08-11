@@ -1,6 +1,6 @@
 {
   "name": "android-sex-size",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "a nodejs cli tool for android screen adaptation",
   "bin": {
     "ruler": "./bin/ruler.js"
